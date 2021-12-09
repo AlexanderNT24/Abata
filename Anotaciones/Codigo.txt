@@ -1,0 +1,10 @@
+1.require(''); me sirve para llamar a los modulos instalados
+2.set(')); asignar
+3.__dirname nodejs me devuelve donde se ejecutando el archivo
+4.res.render() me va a renderizar
+5.module.exports=router; para exportar y usarlo en otros archivos
+6.En el archivo pirncipal declaramos middlewares los cualos son funciones que se ejecutan antes de que pasen a las rutas
+GET / 304 3.696 ms - -
+(La ruta solicita info) (se ha devuelto ) (en n milisegundos)
+7. En passport las autenticaciones se denominan strategy
+8.passport.use('local-signup',new localStrategy({que tipos de datos},()=>{que vamos a hacer con esos datos}));

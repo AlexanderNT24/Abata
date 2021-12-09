@@ -1,0 +1,33 @@
+1.Comandos de nodejs para iniciar un proyecto e instalar modulos
+>>npm init --yes: Crea un proyecto nodejs, con un archivo de tipo json creando metadatos de mi proyecto
+>>npm i: Para instalar multiples modulos
+-express: Es un framework de nodejs, nos permite escribir codigo de una forma simple en el servidor
+-mongoose:Biblioteca que me permite conectarme con mongoDB
+-ejs-mate: Motor de plantillas
+-connect-flash: Enviar mensajes entre paginas
+-morgan: Me permite visualizar por consola
+-passport: Permite hacer autenticaciones, tambien sive para autenticaciones de terceros como google, facebook, github, etc
+-passport-local: Permite hacer autenticaciones de manera local
+-bcrypt-nodejs:Permite hacer cifrado de datos
+>>npm i express mongoose ejs-mate connect-flash morgan passport passport-local bcrypt-nodejs 
+>> npm i nodemon -D: Me ayuda a reiniciar el servidor, se agrega como dependencia de desarrollo y no como principal
+2. Creamos carpetas para almacenar el codigo, rutas, base de datos y demas
+- src donde alojaremos el codigo de nuestro proyecto
+- routes donde alojaremos las rutas del proyecto, sign in out
+- models donde alojaremos el modelo de nuestra base de datos
+- passport para futuras autenticaciones
+- views es para las vistas (Contiene todos los archivos html)
+3. Creamos un archivos para el codigo
+- index.js principal
+- database.js para la base de datos
+- keys.js para almacenar palabras clave como contraseña de la base de datos, direcciones
+4. Comando para ejecutar un archivo
+>>node src/index.js
+5. Para no hacerlo tan tedioso usamos nodemon, modificamos el json 
+-   "scripts": {
+    "dev":"nodemon src/index.js"
+  },
+- Para ejecutar el comando usamos npm run dev
+6. En la carpeta routes creamos un index.js donde almacenaremos las rutas principales
+7. localhost 3000 luego puede ser un dominio
+8. En la carpeta views creamos un archivo llamado index.ejs
