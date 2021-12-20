@@ -6,11 +6,18 @@ const engine= require('ejs-mate');
 const path=require('path');
 //Llamamos al modulo morgan
 const morgan=require('morgan');
+//Llamamos al modulo passport
+const passport=require('passport');
+//Llamamos express-session
+const session=require('express-session');
+//Llamamos a conect falsh
+const flash=require('connect-flash');
 
 //Asignamos a un objeto express()
 const app=express();
 //Llamo al archivo de la base de datos
 require('./database');
+require('./passport/local-auth');
 
 //Configuraciones
 //Como node puede tener compliaciones al encontrar la ruta donde se va a iniciar el proyecto, uso el modulo path para asignarlo y hacelo multiplataforma
@@ -25,7 +32,20 @@ app.set('port',process.env.PORT || 3000);
 //Llamamos a los middlewares
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}));
+app.use(session({
+    secret:'mysecretsession',
+    resave:false,
+    saveUninitializated:false
 
+}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use((req,res,next)=>{
+    app.locals.signUpMessage=req.flash('signUpMessage');
+    next();
+})
 
 //Rutas
 app.use('/',require('./routes/index'));

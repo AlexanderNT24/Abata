@@ -9,6 +9,7 @@
 -passport: Permite hacer autenticaciones, tambien sive para autenticaciones de terceros como google, facebook, github, etc
 -passport-local: Permite hacer autenticaciones de manera local
 -bcrypt-nodejs:Permite hacer cifrado de datos
+-express-session:Para las sesiones
 >>npm i express mongoose ejs-mate connect-flash morgan passport passport-local bcrypt-nodejs 
 >> npm i nodemon -D: Me ayuda a reiniciar el servidor, se agrega como dependencia de desarrollo y no como principal
 2. Creamos carpetas para almacenar el codigo, rutas, base de datos y demas
