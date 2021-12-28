@@ -43,8 +43,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req,res,next)=>{
+    //Declaramos una variable accesible desde toda la aplicación con app.locals
     app.locals.signUpMessage=req.flash('signUpMessage');
+    app.locals.signInMessage=req.flash('signInMessage');
+    //La autenticación nos devuelve un usuario
+    app.locals.user=req.user;
+    //Callback para seguir
     next();
+
 })
 
 //Rutas

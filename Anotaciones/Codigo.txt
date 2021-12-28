@@ -9,3 +9,4 @@ GET / 304 3.696 ms - -
 7. En passport las autenticaciones se denominan strategy
 8.passport.use('local-signup',new localStrategy({que tipos de datos},()=>{que vamos a hacer con esos datos}));
 9.Vamos a autenticar la sesion del usuario, lo guardaremos internamente en un archivo del navegador, para no autenticar cada vez
+10.Con ejs creamos un layouts para repetir el codigo html que se necesite, sin la necesidad de programarlo mil veces

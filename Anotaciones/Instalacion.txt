@@ -18,6 +18,7 @@
 - models donde alojaremos el modelo de nuestra base de datos
 - passport para futuras autenticaciones
 - views es para las vistas (Contiene todos los archivos html)
+- Dentro de views creamos una carpeta llamada layouts, los cuales con los motores de plantillas es algo que se va a repetir
 3. Creamos un archivos para el codigo
 - index.js principal
 - database.js para la base de datos
