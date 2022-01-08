@@ -1,5 +1,6 @@
 //Llamamos a express
 const express = require('express');
+
 //Llamamos al generador de plantillas ejs
 const engine= require('ejs-mate');
 //Llamamos al modulo path para usar rutas del sistema operativo
@@ -15,9 +16,16 @@ const flash=require('connect-flash');
 
 //Asignamos a un objeto express()
 const app=express();
+app.use( express.static( "public" ) );
 //Llamo al archivo de la base de datos
 require('./database');
 require('./passport/local-auth');
+
+//Creamos un servidor http mediante express 
+const http= require('http').Server(app);
+
+//Para la comunicacion entre los html vamos a trabajar con socket.io
+const io= require('socket.io')(http);
 
 //Configuraciones
 //Como node puede tener compliaciones al encontrar la ruta donde se va a iniciar el proyecto, uso el modulo path para asignarlo y hacelo multiplataforma
@@ -46,6 +54,7 @@ app.use((req,res,next)=>{
     //Declaramos una variable accesible desde toda la aplicación con app.locals
     app.locals.signUpMessage=req.flash('signUpMessage');
     app.locals.signInMessage=req.flash('signInMessage');
+    app.locals.title="ABATA";
     //La autenticación nos devuelve un usuario
     app.locals.user=req.user;
     //Callback para seguir
@@ -55,6 +64,8 @@ app.use((req,res,next)=>{
 
 //Rutas
 app.use('/',require('./routes/index'));
+
+
 
 //Iniciamos el servidor
 app.listen(app.get('port'),()=>{

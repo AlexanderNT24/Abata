@@ -1,0 +1,1 @@
+>>npm install socket.io: Modulo que usaremos para hacer la conexion tambien instalamos express pero ya lo usamos en en login 

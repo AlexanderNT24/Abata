@@ -1,2 +1,48 @@
 <%- layout('layouts/main.ejs')%>
-<h1 class="mt 4">Principal </h1>
+    <!DOCTYPE html>
+    <style>
+        #botonStreaming {
+            position: fixed;
+            bottom: 10;
+            right: 0;
+        }
+
+        #botonStreamingStop {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+
+        #video {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+
+    <body>
+        <video class="border border-dark rounded-top" autoplay="true" width="320" height="240" id="video"></video>
+        <button type="button"  id="botonStreaming" class="btn btn-primary btn-block">Reconocer</button>
+        <button type="button" id="botonStreamingStop" class="btn btn-primary btn-block" >Parar</button>
+        <script>
+            var video = document.querySelector("#video");
+            var stream;
+
+            document.getElementById("botonStreamingStop").onclick = () => {
+                stream.getTracks().forEach(function (track) {
+                    track.stop();
+                });
+                document.getElementById("video").style.display = "none";
+            };
+
+            document.querySelector("#botonStreaming").addEventListener("click", async (e) => {
+                document.getElementById("video").style.display = "block";
+                stream = await navigator.mediaDevices.getUserMedia({
+                    video: true
+                })
+                document.querySelector('video').srcObject = stream;
+            });
+
+
+        </script>
+    </body>
