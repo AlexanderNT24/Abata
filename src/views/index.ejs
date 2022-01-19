@@ -1,5 +1,4 @@
 <%- layout('layouts/main.ejs')%>
-    <!DOCTYPE html>
     <style>
         #botonStreaming {
             position: fixed;
@@ -20,29 +19,21 @@
         }
     </style>
 
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
+
     <body>
-        <video class="border border-dark rounded-top" autoplay="true" width="320" height="240" id="video"></video>
+        <div class="container">
+            <video class="input_video" id="inputVid"></video>
+            <canvas class="output_canvas border border-dark rounded-top" width="1280" height="720" id="video"></canvas>
+        </div>
+        <div id="data"></div>
         <button type="button"  id="botonStreaming" class="btn btn-primary btn-block">Reconocer</button>
         <button type="button" id="botonStreamingStop" class="btn btn-primary btn-block" >Parar</button>
-        <script>
-            var video = document.querySelector("#video");
-            var stream;
-
-            document.getElementById("botonStreamingStop").onclick = () => {
-                stream.getTracks().forEach(function (track) {
-                    track.stop();
-                });
-                document.getElementById("video").style.display = "none";
-            };
-
-            document.querySelector("#botonStreaming").addEventListener("click", async (e) => {
-                document.getElementById("video").style.display = "block";
-                stream = await navigator.mediaDevices.getUserMedia({
-                    video: true
-                })
-                document.querySelector('video').srcObject = stream;
-            });
-
-
-        </script>
     </body>
+    <script type="module" src="/src/facemesh.js"></script>
